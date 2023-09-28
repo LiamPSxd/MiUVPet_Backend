@@ -67,7 +67,7 @@ class PetView(View):
         if request.method == "POST":
             pet = Pet.from_dict(json.loads(request.body))
 
-            if pet._id_ > 0:
+            if pet._id_ > -1:
                 return self.message._success_() if self.repository.addPet(pet) else self.message._failed_()
             else:
                 return self.message._failed_()
