@@ -2,7 +2,7 @@ from dataclasses import dataclass
 
 @dataclass
 class Pet:
-    def __init__(self, id = 0, name = "", nickname = "", hunger = 0, energy = 0, health = 0, happiness = 0):
+    def __init__(self, id = 0, name = "", nickname = "", hunger = 0, energy = 0, health = 0, happiness = 0, account = 0):
         self.id = id
         self.name = name
         self.nickname = nickname
@@ -10,6 +10,7 @@ class Pet:
         self.energy = energy
         self.health = health
         self.hapiness = happiness
+        self.account = account
 
     @property
     def _id_(self):
@@ -67,6 +68,14 @@ class Pet:
     def _happiness_(self, happiness):
         self.happiness = happiness
 
+    @property
+    def _account_(self):
+        return self.account
+
+    @_account_.setter
+    def _account_(self, account):
+        self.account = account
+
     @staticmethod
     def from_dict(source):
         return Pet(**source)
@@ -82,5 +91,6 @@ class Pet:
                 hunger = {self._hunger_}, \
                 energy = {self._energy_}, \
                 health = {self._health_}, \
-                hapiness = {self._happiness_}\
+                hapiness = {self._happiness_}, \
+                account = {self._account_},\
             )"
