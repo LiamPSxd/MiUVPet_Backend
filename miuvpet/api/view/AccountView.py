@@ -67,8 +67,14 @@ class AccountView(View):
         if request.method == "POST":
             account = Account.from_dict(json.loads(request.body))
 
-            if account._id_ > -1:
-                return self.message._success_() if self.repository.addAccount(account) else self.message._failed_()
+            accountsName = self.repository.getAccountsWhere("name", "==", account._name_)
+            accountsEmail = self.repository.getAccountsWhere("email", "==", account._email_)
+
+            if len(accountsName) == 0 and len(accountsEmail) == 0:
+                if account._id_ > -1:
+                    return self.message._success_() if self.repository.addAccount(account) else self.message._failed_()
+                else:
+                    return self.message._failed_()
             else:
                 return self.message._failed_()
         else:
