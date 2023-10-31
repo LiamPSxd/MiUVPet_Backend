@@ -9,7 +9,7 @@ class Pet:
         self.hunger = hunger
         self.energy = energy
         self.health = health
-        self.hapiness = happiness
+        self.happiness = happiness
         self.account = account
 
     @property
@@ -91,6 +91,6 @@ class Pet:
                 hunger = {self._hunger_}, \
                 energy = {self._energy_}, \
                 health = {self._health_}, \
-                hapiness = {self._happiness_}, \
+                happiness = {self._happiness_}, \
                 account = {self._account_},\
             )"
